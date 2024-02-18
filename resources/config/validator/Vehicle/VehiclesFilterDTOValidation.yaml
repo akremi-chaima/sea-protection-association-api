@@ -1,0 +1,33 @@
+App\DTO\Vehicle\VehiclesFilterDTO:
+    properties:
+        brandId:
+            - Type: int
+        modelId:
+            - Type: int
+        minPrice:
+            - Type: float
+            - Regex: '/^\d*\.?\d*$/'
+        maxPrice:
+            - Type: float
+            - Regex: '/^\d*\.?\d*$/'
+        minMileage:
+            - Type: int
+        maxMileage:
+            - Type: int
+        minManufacturingYear:
+            - Type: int
+            - Regex: '/^\d{4}$/'
+        maxManufacturingYear:
+            - Type: int
+            - Regex: '/^\d{4}$/'
+        fiscalPower:
+            - Type: int
+        colorId:
+            - Type: int
+        energyId:
+            - Type: int
+        gearboxId:
+            - Type: int
+        orderBy:
+            - Type: string
+            - Choice: [ 'asc_price', 'desc_price', 'asc_mileage', 'desc_mileage', 'desc_manufacturing_year', 'asc_manufacturing_year' ]

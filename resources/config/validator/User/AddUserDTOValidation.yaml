@@ -1,0 +1,21 @@
+App\DTO\User\AddUserDTO:
+    properties:
+        firstname:
+            - Type: string
+            - NotBlank: ~
+        lastname:
+            - Type: string
+            - NotBlank: ~
+        email:
+            - Type: string
+            - NotBlank: ~
+            - Email: ~
+        password:
+            - Type: string
+            - NotBlank: ~
+        role:
+            - Type: string
+            - NotBlank: ~
+            - Choice: [ 'administrator', 'employee' ]
+        isActive:
+            - Type: boolean

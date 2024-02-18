@@ -1,0 +1,9 @@
+App\DTO\User\LoginDTO:
+    properties:
+        email:
+            - Type: string
+            - NotBlank: ~
+            - Email: ~
+        password:
+            - Type: string
+            - NotBlank: ~

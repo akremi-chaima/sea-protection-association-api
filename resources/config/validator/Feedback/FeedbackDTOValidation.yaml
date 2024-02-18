@@ -1,0 +1,15 @@
+App\DTO\Feedback\AddFeedbackDTO:
+    properties:
+        lastName:
+            - Type: string
+            - NotBlank: ~
+        firstName:
+            - Type: string
+            - NotBlank: ~
+        message:
+            - Type: string
+            - NotBlank: ~
+        stars:
+            - Type: integer
+            - NotBlank: ~
+            - Regex: '/^[1-5]$/'

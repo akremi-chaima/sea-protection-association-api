@@ -1,0 +1,20 @@
+App\DTO\OpeningHour\UpdateOpeningHourDTO:
+    properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
+        day:
+            - Type: string
+            - NotBlank: ~
+        morningStartHour:
+            - Type: string
+            - Regex: '/^(08|09):[0-5][0-9]$/'
+        morningEndHour:
+            - Type: string
+            - Regex: '/^(1[0-2]):[0-5][0-9]$/'
+        afternoonStartHour:
+            - Type: string
+            - Regex: '/^(1[4-8]):[0-5][0-9]$/'
+        afternoonEndHour:
+            - Type: string
+            - Regex: '/^(1[4-8]):[0-5][0-9]$/'

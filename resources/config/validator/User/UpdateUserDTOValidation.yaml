@@ -1,0 +1,21 @@
+App\DTO\User\UpdateUserDTO:
+    properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
+        firstname:
+            - Type: string
+            - NotBlank: ~
+        lastname:
+            - Type: string
+            - NotBlank: ~
+        email:
+            - Type: string
+            - NotBlank: ~
+            - Email: ~
+        role:
+            - Type: string
+            - NotBlank: ~
+            - Choice: [ 'administrator', 'employee' ]
+        isActive:
+            - Type: boolean

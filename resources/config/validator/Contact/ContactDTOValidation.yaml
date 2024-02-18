@@ -1,0 +1,32 @@
+App\DTO\Contact\ContactDTO:
+    properties:
+        subject:
+            - Type: string
+            - NotBlank: ~
+        lastName:
+            - Type: string
+            - NotBlank: ~
+        firstName:
+            - Type: string
+            - NotBlank: ~
+        email:
+            - Type: string
+            - NotBlank: ~
+            - Email: ~
+        message:
+            - Type: string
+            - NotBlank: ~
+        phoneNumber:
+            - Type: string
+            - NotBlank: ~
+            - Regex: '/^0[1|2|3|4|5|6|7|9][0-9]{8}$/'
+        street:
+            - Type: string
+            - NotBlank: ~
+        zipCode:
+            - Type: string
+            - NotBlank: ~
+            - Regex: '/\b\d{5}\b/'
+        city:
+            - Type: string
+            - NotBlank: ~

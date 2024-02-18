@@ -1,0 +1,16 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    providers:
+        jwt_user_provider:
+            id: App\Security\JwtUserProvider
+
+    firewalls:
+        apidoc:
+            pattern: /api/doc
+            security: false
+        jwt:
+            pattern: ^/api/private/*
+            stateless: true
+            custom_authenticators:
+                - App\Security\JwtUserAuthenticator

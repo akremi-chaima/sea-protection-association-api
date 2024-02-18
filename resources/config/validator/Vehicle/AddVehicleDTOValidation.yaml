@@ -1,0 +1,34 @@
+App\DTO\Vehicle\AddVehicleDTO:
+    properties:
+        price:
+            - Type: float
+            - Regex: '/^\d*\.?\d*$/'
+            - NotBlank: ~
+        circulationDate:
+            - Date: ~
+            - NotBlank: ~
+        mileage:
+            - Type: int
+            - NotBlank: ~
+        fiscalPower:
+            - Type: int
+            - NotBlank: ~
+        manufacturingYear:
+            - Type: int
+            - Regex: '/^\d{4}$/'
+            - NotBlank: ~
+        colorId:
+            - Type: int
+            - NotBlank: ~
+        energyId:
+            - Type: int
+            - NotBlank: ~
+        gearboxId:
+            - Type: int
+            - NotBlank: ~
+        modelId:
+            - Type: int
+            - NotBlank: ~
+        optionsIds:
+            - Type: array
+            - NotBlank: ~
