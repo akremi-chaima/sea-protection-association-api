@@ -1,11 +1,12 @@
-App\DTO\User\UpdatePasswordDTO:
+App\DTO\Event\CreateEventDTO:
     properties:
-        password:
+        title:
             - Type: string
             - NotBlank: ~
-        newPassword:
+        address:
             - Type: string
             - NotBlank: ~
-        newPasswordConfirmation:
-            - Type: string
+        date:
+            - DateTime: ~
             - NotBlank: ~
+

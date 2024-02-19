@@ -1,0 +1,15 @@
+App\DTO\Event\UpdateEventDTO:
+    properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
+        title:
+            - Type: string
+            - NotBlank: ~
+        address:
+            - Type: string
+            - NotBlank: ~
+        date:
+            - DateTime: ~
+            - NotBlank: ~
+

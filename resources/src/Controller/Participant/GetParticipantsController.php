@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller\Event;
+namespace App\Controller\Participant;
 
 use App\Entity\Event;
 use App\Manager\EventManager;
@@ -34,6 +34,7 @@ class GetParticipantsController extends AbstractController
     ) {
         $this->participantManager = $participantManager;
         $this->serializer = $serializer;
+        $this->eventManager = $eventManager;
     }
 
     /**
