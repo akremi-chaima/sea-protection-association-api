@@ -1,0 +1,8 @@
+App\DTO\News\CreateNewsDTO:
+    properties:
+        title:
+            - Type: string
+            - NotBlank: ~
+        description:
+            - Type: string
+            - NotBlank: ~

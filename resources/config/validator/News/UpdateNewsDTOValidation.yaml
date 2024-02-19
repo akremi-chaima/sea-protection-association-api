@@ -1,0 +1,11 @@
+App\DTO\News\UpdateNewsDTO:
+    properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
+        title:
+            - Type: string
+            - NotBlank: ~
+        description:
+            - Type: string
+            - NotBlank: ~
