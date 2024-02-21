@@ -1,0 +1,19 @@
+App\DTO\Participant\AddParticipantDTO:
+    properties:
+        firstName:
+            - Type: string
+            - NotBlank: ~
+        lastName:
+            - Type: string
+            - NotBlank: ~
+        phoneNumber:
+            - Type: string
+            - Regex: '/^0[6-7][0-9]{8}$/'
+            - NotBlank: ~
+        eventId:
+            - Type: integer
+            - NotBlank: ~
+        email:
+            - Email: ~
+            - NotBlank: ~
+

@@ -45,6 +45,7 @@ class GetParticipantsController extends AbstractController
      * @OA\Tag(name="Participant")
      *
      * @OA\Response(response=200, description="Participants list")
+     * @OA\Response(response=400, description="The event was not found.")
      *
      * @param int $eventId
      * @return JsonResponse

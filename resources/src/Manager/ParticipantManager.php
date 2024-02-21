@@ -16,4 +16,13 @@ class ParticipantManager extends AbstractManager
     {
         parent::__construct($managerInterface, Participant::class);
     }
+
+    /**
+     * @param Participant $participant
+     * @return void
+     */
+    public function save(Participant $participant) {
+        $this->getEntityManager()->persist($participant);
+        $this->getEntityManager()->flush();
+    }
 }
