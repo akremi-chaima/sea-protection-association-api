@@ -41,7 +41,7 @@ services:
       MYSQL_PASSWORD: myPassword
       TZ: 'Europe/Paris'
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
 networks:
   default:
