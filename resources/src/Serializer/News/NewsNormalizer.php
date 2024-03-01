@@ -18,7 +18,7 @@ class NewsNormalizer implements NormalizerInterface
             'id' => $news->getId(),
             'description' => $news->getDescription(),
             'title' => $news->getTitle(),
-            'picture' => $news->getPicture(),
+            'picture' => 'uploads/'.$news->getId().'/'.$news->getPicture(),
             'createdAt' => $news->getCreatedAt()->format('d/m/Y'),
         ];
     }
