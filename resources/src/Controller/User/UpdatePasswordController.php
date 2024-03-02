@@ -95,7 +95,7 @@ class UpdatePasswordController extends AbstractController
 
         // Get connected user
         /** @var User|null $userById */
-        $userById = $this->userManager->findOneBy(['id' => $user->getId(), 'active' => true]);
+        $userById = $this->userManager->findOneBy(['id' => $user->getId()]);
         if (is_null($userById)) {
             return new JsonResponse(['error_message' => 'The account is disabled'], Response::HTTP_BAD_REQUEST);
         }
