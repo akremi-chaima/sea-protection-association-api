@@ -60,6 +60,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @param int $id
+     * @return User
+     */
+    public function setId(int $id): User
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getFirstName(): string

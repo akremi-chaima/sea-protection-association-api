@@ -69,7 +69,6 @@ class JwtUserProvider implements UserProviderInterface
 
         return (new User())
             ->setId($payload['user']['id'])
-            ->setUsername($payload['user']['username'])
-            ->setRoles($payload['user']['role']);
+            ->setEmail($payload['user']['username']);
     }
 }
