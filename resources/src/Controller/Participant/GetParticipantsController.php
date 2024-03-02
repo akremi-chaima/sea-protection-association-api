@@ -6,6 +6,7 @@ use App\Manager\EventManager;
 use App\Manager\ParticipantManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,17 +41,18 @@ class GetParticipantsController extends AbstractController
     /**
      * Get participants list by event id
      *
-     * @Route("/api/participants/{eventId}", methods={"GET"})
+     * @Route("/api/private/participants/{eventId}", methods={"GET"})
      *
      * @OA\Tag(name="Participant")
      *
-     * @OA\Response(response=200, description="Participants list")
+     * @OA\Response(response=200, description="Participants list by event")
      * @OA\Response(response=400, description="The event was not found.")
      *
      * @param int $eventId
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(int $eventId): JsonResponse
+    public function __invoke(int $eventId, UserInterface $user): JsonResponse
     {
         /** @var Event|null $event */
         $event = $this->eventManager->findOneBy(['id' => $eventId]);

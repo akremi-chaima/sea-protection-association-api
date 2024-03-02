@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class DeleteNewsController extends AbstractController
 {
@@ -24,7 +25,7 @@ class DeleteNewsController extends AbstractController
     /**
      * Delete news
      *
-     * @Route("/api/news/{newsId}", methods={"DELETE"})
+     * @Route("/api/private/news/{newsId}", methods={"DELETE"})
      *
      * @OA\Tag(name="News")
      *
@@ -32,9 +33,10 @@ class DeleteNewsController extends AbstractController
      * @OA\Response(response=400, description="News was not found")
      *
      * @param int $newsId
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(int $newsId): JsonResponse
+    public function __invoke(int $newsId, UserInterface $user): JsonResponse
     {
         $news = $this->newsManager->findOneBy(['id' => $newsId]);
         if (is_null($news)) {

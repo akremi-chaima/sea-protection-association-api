@@ -7,6 +7,7 @@ use App\Manager\EventManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -42,7 +43,7 @@ class CreateEventController extends AbstractController
     /**
      * Create event
      *
-     * @Route("/api/event", methods={"POST"})
+     * @Route("/api/private/event", methods={"POST"})
      *
      * @OA\Tag(name="Event")
      *
@@ -62,9 +63,12 @@ class CreateEventController extends AbstractController
      * @OA\Response(response=200, description="Event created")
      * @OA\Response(response=400, description="Invalid data")
      *
+     * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
+     * @throws \Exception
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
         /** @var CreateEventDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), CreateEventDTO::class, 'json');

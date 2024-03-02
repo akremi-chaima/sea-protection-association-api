@@ -7,6 +7,7 @@ use App\Manager\EventManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -42,7 +43,7 @@ class UpdateEventController extends AbstractController
     /**
      * Update event
      *
-     * @Route("/api/event", methods={"PUT"})
+     * @Route("/api/private/event", methods={"PUT"})
      *
      * @OA\Tag(name="Event")
      *
@@ -63,9 +64,12 @@ class UpdateEventController extends AbstractController
      * @OA\Response(response=200, description="Event updated")
      * @OA\Response(response=400, description="Invalid data | Event was not found")
      *
+     * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
+     * @throws \Exception
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
         /** @var UpdateEventDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), UpdateEventDTO::class, 'json');

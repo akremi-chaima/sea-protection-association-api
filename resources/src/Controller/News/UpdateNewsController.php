@@ -6,6 +6,7 @@ use App\Manager\NewsManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,7 +43,7 @@ class UpdateNewsController extends AbstractController
     /**
      * Update news
      *
-     * @Route("/api/update/news", methods={"POST"})
+     * @Route("/api/private/update/news", methods={"POST"})
      *
      * @OA\Tag(name="News")
      *
@@ -64,9 +65,10 @@ class UpdateNewsController extends AbstractController
      * @OA\Response(response=400, description="Invalid data")
      *
      * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
         /** @var UploadedFile|null $file */
         $file = $request->files->get('file');

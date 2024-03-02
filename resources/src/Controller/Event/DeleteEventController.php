@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class DeleteEventController extends AbstractController
 {
@@ -24,7 +25,7 @@ class DeleteEventController extends AbstractController
     /**
      * Delete event
      *
-     * @Route("/api/event/{eventId}", methods={"DELETE"})
+     * @Route("/api/private/event/{eventId}", methods={"DELETE"})
      *
      * @OA\Tag(name="Event")
      *
@@ -32,9 +33,10 @@ class DeleteEventController extends AbstractController
      * @OA\Response(response=400, description="Event was not found")
      *
      * @param int $eventId
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(int $eventId): JsonResponse
+    public function __invoke(int $eventId, UserInterface $user): JsonResponse
     {
         $event = $this->eventManager->findOneBy(['id' => $eventId]);
         if (is_null($event)) {

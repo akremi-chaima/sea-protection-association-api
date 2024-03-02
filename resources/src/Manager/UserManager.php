@@ -16,4 +16,22 @@ class UserManager extends AbstractManager
     {
         parent::__construct($managerInterface, User::class);
     }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function save(User $user) {
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function delete(User $user) {
+        $this->getEntityManager()->remove($user);
+        $this->getEntityManager()->flush();
+    }
 }
