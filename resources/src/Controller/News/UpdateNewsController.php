@@ -92,8 +92,13 @@ class UpdateNewsController extends AbstractController
         }
 
         $news->setTitle($dto->getTitle())
-            ->setDescription($dto->getDescription())
-            ->setPicture(!is_null($file) ? $file->getClientOriginalName() : null);
+            ->setDescription($dto->getDescription());
+
+        if (!empty($file)) {
+            $news->setPicture($file->getClientOriginalName());
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/'.$news->getId();
+            $file->move($destination, $file->getClientOriginalName());
+        }
 
         $this->newsManager->save($news);
 

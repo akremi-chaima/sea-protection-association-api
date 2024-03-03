@@ -93,7 +93,10 @@ class CreateNewsController extends AbstractController
             ->setPicture(!is_null($file) ? $file->getClientOriginalName() : null);
 
         $this->newsManager->save($news);
-
+        if (!empty($file)) {
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads/'.$news->getId();
+            $file->move($destination, $file->getClientOriginalName());
+        }
         return new JsonResponse(['message' => 'OK'], Response::HTTP_OK);
     }
 }
